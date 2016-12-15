@@ -1,0 +1,16 @@
+PODS:
+  - Masonry (1.0.2)
+  - TTGTagCollectionView (1.1.0)
+  - UIView+FDCollapsibleConstraints (1.1)
+
+DEPENDENCIES:
+  - Masonry (~> 1.0.2)
+  - TTGTagCollectionView (~> 1.1.0)
+  - UIView+FDCollapsibleConstraints (~> 1.1)
+
+SPEC CHECKSUMS:
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  TTGTagCollectionView: 35d5be35216454acd91f0c77f589475ce2eea720
+  UIView+FDCollapsibleConstraints: 9357eaf03b4e088263ab74a3b86a382a64ce38dd
+
+COCOAPODS: 0.38.2

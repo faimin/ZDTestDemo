@@ -1,0 +1,1 @@
+../../../TTGTagCollectionView/TTGTagCollectionView/Classes/TTGTagCollectionCell.h

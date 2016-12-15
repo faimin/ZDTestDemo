@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TestTopView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="141"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5D-JK-Ude">
+                    <rect key="frame" x="10" y="10" width="355" height="527.5"/>
+                    <mutableString key="text">游戏中消除背景直接整得和个古旧的金币制造机似的，消除界面里则垒着满满的彩色能源。这些彩色能源的排布状况只会在玩家开始游戏后向玩家显示几秒钟，之后整个消除界面就会完全暗下来，玩家需要凭借自己之前的记忆，快速的将自己之前看到的那些两个或以上的同色且相邻的能源相连，进行消除。
+
+能源被连接时会显示原貌，消除时会产生电流，照亮附近的区域几秒，方便玩家巩固早前的记忆，进行下一步的消除。游戏时，玩家只能横着或者竖着连接各个能源进行消除，不可斜着连，另外如果滑指过头，之前显示原貌的那些个能源会瞬间被黑暗笼罩，需要玩家重新滑指，让它现形。规则是，连接的能源越多，能获取的金币也会越多。
+
+游戏分有经典、定时及挑战三个模式。经典模式下，只要你消除了一些能源，背景上的安全阀门就会被转回去，让你能够继续玩下去，只要阀门别彻底滑倒红色区域你就能一直玩。限时模式下，没有安全阀门有的就是个蓝色的倒计时仪表，仪表彻底被红色占据，游戏结束。挑战模式则是供玩家在线与其他人 PK 的。游戏比一般的消除游戏要更耐玩一些，感兴趣的可以趁着限免戳一发。</mutableString>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="a5D-JK-Ude" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="15r-aF-D1D"/>
+                <constraint firstAttribute="trailing" secondItem="a5D-JK-Ude" secondAttribute="trailing" constant="10" id="3Uo-Ry-hfc"/>
+                <constraint firstAttribute="bottom" secondItem="a5D-JK-Ude" secondAttribute="bottom" priority="750" constant="10" id="9Sz-Gb-Tg4"/>
+                <constraint firstItem="a5D-JK-Ude" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="YpU-s8-rUk"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="9.5" y="-229.5"/>
+        </view>
+    </objects>
+</document>
