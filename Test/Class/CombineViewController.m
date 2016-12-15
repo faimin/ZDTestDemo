@@ -9,7 +9,7 @@
 #import "CombineViewController.h"
 #import <Masonry.h>
 
-static NSString * const reuseIdentifier = @"reuseIdentifier";
+
 static NSTimeInterval const duration = 0.4;
 
 
@@ -46,8 +46,8 @@ static NSTimeInterval const duration = 0.4;
     [self addChildViewController:subController];
     [subController didMoveToParentViewController:self];
     //子控制器view添加到self.view
-    [self.view addSubview:subController.view];
     self.bottomView = subController.view;
+    [self.view addSubview:subController.view];
 }
 
 - (void)setupView {
@@ -57,6 +57,7 @@ static NSTimeInterval const duration = 0.4;
     [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.view);
     }];
+    
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
         make.top.equalTo(self.topView.mas_bottom);
@@ -75,6 +76,8 @@ static NSTimeInterval const duration = 0.4;
     if (_topViewHeight != topViewHeight) {
         _topViewHeight = topViewHeight;
         
+        NSAssert((self.topView && self.topView.superview), @"topView和它的父视图均不能为nil");
+        
         [self.topView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.equalTo(self.view);
             make.height.mas_equalTo(_topViewHeight);
@@ -86,8 +89,6 @@ static NSTimeInterval const duration = 0.4;
         }];
     }
 }
-
-
 
 @end
 

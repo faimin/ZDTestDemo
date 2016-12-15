@@ -13,8 +13,8 @@
 static CGFloat const defaultTitleViewHeight = 50.0f;
 static NSString * const scrollViewKeyPath = @"contentOffset";
 
-@interface SearchConditionController ()<UIScrollViewDelegate>
-@property (nonatomic, strong) MASConstraint *titleViewHeightConstraint;
+@interface SearchConditionController ()
+
 @end
 
 
@@ -43,7 +43,6 @@ static NSString * const scrollViewKeyPath = @"contentOffset";
 - (void)configSubView {
     //监听contentoffsetY
     UIScrollView *scrollView = [((id<SearchConditionProtocol>)self.bottomController) scrollView];
-    scrollView.bounces = NO;
     [scrollView addObserver:self forKeyPath:scrollViewKeyPath options:NSKeyValueObservingOptionNew context:nil];
     
     if (self.topView && self.titleView) {
@@ -106,6 +105,10 @@ static NSString * const scrollViewKeyPath = @"contentOffset";
 }
 
 - (void)unfoldView:(BOOL)unfold {
+    if (_forbidFold) {  //禁用折叠直接返回
+        return;
+    }
+    
     dispatch_barrier_async(dispatch_get_main_queue(), ^{
         
         self.topViewHeight = unfold ? self.realTopViewHeight : defaultTitleViewHeight;
@@ -126,7 +129,16 @@ static NSString * const scrollViewKeyPath = @"contentOffset";
         // 改变状态
         _fold = !unfold;
     });
-    
+}
+
+#pragma mark - Property 
+
+- (void)setForbidFold:(BOOL)forbidFold {
+    if (forbidFold) {
+        self.topViewHeight = 0.f;
+        _fold = NO;
+    }
+    _forbidFold = forbidFold;
 }
 
 @end

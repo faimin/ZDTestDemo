@@ -15,6 +15,7 @@
 		BC5530661E0155740037A6CB /* SearchConditionController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5530641E0155740037A6CB /* SearchConditionController.m */; };
 		BC55306D1E023C110037A6CB /* UIButton+ZDUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = BC55306C1E023C110037A6CB /* UIButton+ZDUtility.m */; };
 		BC5530701E02772C0037A6CB /* UIViewController+SearchCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = BC55306F1E02772C0037A6CB /* UIViewController+SearchCondition.m */; };
+		BC5530731E028B320037A6CB /* UIViewController+SearchConditionPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5530721E028B320037A6CB /* UIViewController+SearchConditionPlus.m */; };
 		BC9160941DFBFC02005A5D5B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9160931DFBFC02005A5D5B /* main.m */; };
 		BC9160971DFBFC02005A5D5B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9160961DFBFC02005A5D5B /* AppDelegate.m */; };
 		BC91609A1DFBFC02005A5D5B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9160991DFBFC02005A5D5B /* ViewController.m */; };
@@ -63,6 +64,8 @@
 		BC55306C1E023C110037A6CB /* UIButton+ZDUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ZDUtility.m"; sourceTree = "<group>"; };
 		BC55306E1E02772C0037A6CB /* UIViewController+SearchCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SearchCondition.h"; sourceTree = "<group>"; };
 		BC55306F1E02772C0037A6CB /* UIViewController+SearchCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SearchCondition.m"; sourceTree = "<group>"; };
+		BC5530711E028B320037A6CB /* UIViewController+SearchConditionPlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SearchConditionPlus.h"; sourceTree = "<group>"; };
+		BC5530721E028B320037A6CB /* UIViewController+SearchConditionPlus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SearchConditionPlus.m"; sourceTree = "<group>"; };
 		BC91608F1DFBFC02005A5D5B /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC9160931DFBFC02005A5D5B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BC9160951DFBFC02005A5D5B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				BC55306A1E0235940037A6CB /* ConditionProtocol.h */,
 				BC55306E1E02772C0037A6CB /* UIViewController+SearchCondition.h */,
 				BC55306F1E02772C0037A6CB /* UIViewController+SearchCondition.m */,
+				BC5530711E028B320037A6CB /* UIViewController+SearchConditionPlus.h */,
+				BC5530721E028B320037A6CB /* UIViewController+SearchConditionPlus.m */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -412,6 +417,7 @@
 				BC5530661E0155740037A6CB /* SearchConditionController.m in Sources */,
 				BC55306D1E023C110037A6CB /* UIButton+ZDUtility.m in Sources */,
 				BC91609A1DFBFC02005A5D5B /* ViewController.m in Sources */,
+				BC5530731E028B320037A6CB /* UIViewController+SearchConditionPlus.m in Sources */,
 				BC9160DE1DFEC450005A5D5B /* ConditionCell.m in Sources */,
 				BC9160DB1DFE9426005A5D5B /* SearchConditionView.m in Sources */,
 				BC9160971DFBFC02005A5D5B /* AppDelegate.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
 @interface CombineViewController : UIViewController
 
 /// 上面的头视图，需要外面传进来
@@ -25,8 +26,8 @@
 @property (nonatomic, assign) NSTimeInterval durationInteral;
 
 @end
+NS_ASSUME_NONNULL_END
 
-//@property (nonatomic, copy) void(^scrollBlock)(UIScrollView *scrollView);
 
 
 

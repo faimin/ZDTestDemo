@@ -12,8 +12,9 @@
 @interface SearchConditionController : CombineViewController
 
 @property (nonatomic, strong) UIView *titleView;
-
 /// nullable,默认为50
 @property (nonatomic, assign) CGFloat titleViewHeight;
+
+@property (nonatomic, assign) BOOL forbidFold;
 
 @end
