@@ -20,8 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 高度不设置的话，默认会根据topView上的约束自动撑起来
 @property (nonatomic, assign) CGFloat topViewHeight;
 
-@property (nonatomic, assign) CGFloat realTopViewHeight;
-
 /// 动画执行时间，默认值为0.4秒
 @property (nonatomic, assign) NSTimeInterval durationInteral;
 

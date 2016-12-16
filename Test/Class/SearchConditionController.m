@@ -14,14 +14,15 @@ static CGFloat const defaultTitleViewHeight = 50.0f;
 static NSString * const scrollViewKeyPath = @"contentOffset";
 
 @interface SearchConditionController ()
-
+/// topView最初的高度（warning：这个值可能不准确）
+@property (nonatomic, assign) CGFloat realTopViewHeight;
 @end
 
 
 @implementation SearchConditionController
 {
     CGFloat _contentOffsetY;
-    BOOL _fold;             ///< 收起状态，默认是NO（展开状态）
+    BOOL _fold; ///< 收起状态，默认是NO（展开状态）
 }
 
 #pragma mark - Life Cycle
@@ -146,6 +147,17 @@ static NSString * const scrollViewKeyPath = @"contentOffset";
         _fold = NO;
     }
     _forbidFold = forbidFold;
+}
+
+- (void)setTopViewHeight:(CGFloat)topViewHeight {
+    if (topViewHeight == 0) {
+        [self.titleView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.equalTo(self.topView);
+            make.height.mas_equalTo(0);
+        }];
+    }
+    
+    [super setTopViewHeight:topViewHeight];
 }
 
 @end

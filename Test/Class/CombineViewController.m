@@ -64,12 +64,6 @@ static NSTimeInterval const duration = 0.4;
     }];
 }
 
-#pragma mark - Public Method
-
-#pragma mark - Private Method
-
-#pragma mark - System Method
-
 #pragma mark - Property
 // Setter
 - (void)setTopViewHeight:(CGFloat)topViewHeight {
