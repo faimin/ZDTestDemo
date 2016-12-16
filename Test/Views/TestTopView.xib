@@ -16,12 +16,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5D-JK-Ude">
-                    <rect key="frame" x="10" y="10" width="355" height="527.5"/>
+                    <rect key="frame" x="10" y="10" width="355" height="325"/>
                     <mutableString key="text">游戏中消除背景直接整得和个古旧的金币制造机似的，消除界面里则垒着满满的彩色能源。这些彩色能源的排布状况只会在玩家开始游戏后向玩家显示几秒钟，之后整个消除界面就会完全暗下来，玩家需要凭借自己之前的记忆，快速的将自己之前看到的那些两个或以上的同色且相邻的能源相连，进行消除。
 
-能源被连接时会显示原貌，消除时会产生电流，照亮附近的区域几秒，方便玩家巩固早前的记忆，进行下一步的消除。游戏时，玩家只能横着或者竖着连接各个能源进行消除，不可斜着连，另外如果滑指过头，之前显示原貌的那些个能源会瞬间被黑暗笼罩，需要玩家重新滑指，让它现形。规则是，连接的能源越多，能获取的金币也会越多。
-
-游戏分有经典、定时及挑战三个模式。经典模式下，只要你消除了一些能源，背景上的安全阀门就会被转回去，让你能够继续玩下去，只要阀门别彻底滑倒红色区域你就能一直玩。限时模式下，没有安全阀门有的就是个蓝色的倒计时仪表，仪表彻底被红色占据，游戏结束。挑战模式则是供玩家在线与其他人 PK 的。游戏比一般的消除游戏要更耐玩一些，感兴趣的可以趁着限免戳一发。</mutableString>
+能源被连接时会显示原貌，消除时会产生电流，照亮附近的区域几秒，方便玩家巩固早前的记忆，进行下一步的消除。游戏时，玩家只能横着或者竖着连接各个能源进行消除，不可斜着连，另外如果滑指过头，之前显示原貌的那些个能源会瞬间被黑暗笼罩，需要玩家重新滑指，让它现形。规则是，连接的能源越多，能获取的金币也会越多。</mutableString>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>

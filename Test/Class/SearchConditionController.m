@@ -83,6 +83,9 @@ static NSString * const scrollViewKeyPath = @"contentOffset";
 
 - (void)kvo:(CGPoint)contentOffset {
     CGFloat contentOffsetY = contentOffset.y;
+    
+    if (contentOffsetY == _contentOffsetY) return;
+    
     if (contentOffsetY >= _contentOffsetY) {
         NSLog(@"上滑");
     } else {
@@ -101,6 +104,10 @@ static NSString * const scrollViewKeyPath = @"contentOffset";
 #pragma mark - Private Method
 
 - (void)titleViewEvent {
+    //手动停止滑动
+    UIScrollView *scrollView = [((id<SearchConditionProtocol>)self.bottomController) scrollView];
+    [scrollView setContentOffset:CGPointMake(0, _contentOffsetY) animated:NO];
+    // 展开头视图
     [self unfoldView:YES];
 }
 
