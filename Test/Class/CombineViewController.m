@@ -67,7 +67,7 @@ static NSTimeInterval const duration = 0.4;
 #pragma mark - Property
 // Setter
 - (void)setTopViewHeight:(CGFloat)topViewHeight {
-    if (_topViewHeight != topViewHeight) {
+    if (_topViewHeight != topViewHeight || topViewHeight == 0) {
         _topViewHeight = topViewHeight;
         
         NSAssert((self.topView && self.topView.superview), @"topView和它的父视图均不能为nil");
