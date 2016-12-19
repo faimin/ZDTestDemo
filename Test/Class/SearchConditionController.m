@@ -94,7 +94,7 @@ static NSString * const scrollViewKeyPath = @"contentOffset";
     }
     _contentOffsetY = contentOffsetY;
     
-    if (contentOffsetY <= 0 && _fold) {           // 展开
+    if (contentOffsetY < 0 && _fold) {           // 展开
         [self unfoldView:YES];
     }
     else if (contentOffsetY > 10 && !_fold) {     //收起
