@@ -113,12 +113,9 @@ static NSString * const scrollViewKeyPath = @"contentOffset";
 }
 
 - (void)unfoldView:(BOOL)unfold {
-    if (_forbidFold) {  //禁用折叠直接返回
-        return;
-    }
+    if (_forbidFold) return;  //禁用折叠直接返回
     
     dispatch_barrier_async(dispatch_get_main_queue(), ^{
-        
         self.topViewHeight = unfold ? self.realTopViewHeight : defaultTitleViewHeight;
         if (self.titleView) {
             if (unfold) {
