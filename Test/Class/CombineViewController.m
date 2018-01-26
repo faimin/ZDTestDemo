@@ -21,24 +21,28 @@ static NSTimeInterval const duration = 0.4;
 @implementation CombineViewController
 
 #pragma mark - LifeCycle
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setup];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
 }
 
-- (void)setup {
+- (void)setup
+{
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    
+
     [self setupViewController];
     [self setupView];
 }
 
-- (void)setupViewController {
+- (void)setupViewController
+{
     if (!self.bottomController) return;
 
     //添加子控制器
@@ -50,14 +54,15 @@ static NSTimeInterval const duration = 0.4;
     [self.view addSubview:subController.view];
 }
 
-- (void)setupView {
+- (void)setupView
+{
     [self.view addSubview:self.topView];
-    
+
     //给top、bottomView添加约束
     [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.view);
     }];
-    
+
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
         make.top.equalTo(self.topView.mas_bottom);
@@ -66,17 +71,18 @@ static NSTimeInterval const duration = 0.4;
 
 #pragma mark - Property
 // Setter
-- (void)setTopViewHeight:(CGFloat)topViewHeight {
+- (void)setTopViewHeight:(CGFloat)topViewHeight
+{
     if (_topViewHeight != topViewHeight || topViewHeight == 0) {
         _topViewHeight = topViewHeight;
-        
+
         NSAssert((self.topView && self.topView.superview), @"topView和它的父视图均不能为nil");
-        
+
         [self.topView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.equalTo(self.view);
             make.height.mas_equalTo(_topViewHeight);
         }];
-        
+
         [self.view setNeedsLayout];
         [UIView animateWithDuration:(self.durationInteral ?: duration) animations:^{
             [self.view layoutIfNeeded];
@@ -85,13 +91,3 @@ static NSTimeInterval const duration = 0.4;
 }
 
 @end
-
-
-
-
-
-
-
-
-
-

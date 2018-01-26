@@ -9,11 +9,13 @@
 #import "BlueViewController.h"
 #import "CombineViewController.h"
 
-static NSString * const reuseIdentifier = @"reuseIdentifier";
+static NSString *const reuseIdentifier = @"reuseIdentifier";
 
-@interface BlueViewController ()<UITableViewDataSource, UITableViewDelegate>
+
+@interface BlueViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
+
 
 @implementation BlueViewController
 {
@@ -22,35 +24,41 @@ static NSString * const reuseIdentifier = @"reuseIdentifier";
 }
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.scrollView registerClass:[UITableViewCell class] forCellReuseIdentifier:reuseIdentifier];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - UITableViewDatasource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return 100;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [UIColor grayColor];
-    cell.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row+1];
+    cell.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row + 1];
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     NSLog(@"点击的第%zd行", indexPath.row);
 }
 
@@ -73,8 +81,6 @@ static NSString * const reuseIdentifier = @"reuseIdentifier";
 //        ((CombineViewController *)self.parentViewController).topViewHeight = 50;
 //    }
 //}
-
-
 
 
 @end

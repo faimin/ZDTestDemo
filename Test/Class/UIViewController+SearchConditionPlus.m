@@ -11,7 +11,7 @@
 #import <Masonry.h>
 
 static CGFloat const defaultTitleViewHeight = 50.0f;
-static NSString * const scrollViewKeyPath = @"contentOffset";
+static NSString *const scrollViewKeyPath = @"contentOffset";
 
 
 @interface UIViewController (Private)
@@ -20,19 +20,21 @@ static NSString * const scrollViewKeyPath = @"contentOffset";
 @property (nonatomic, assign) CGFloat realTopViewHeight;
 @end
 
+
 @implementation UIViewController (SearchConditionPlus)
 
 #pragma mark - Public
 
-- (void)configSubView {
+- (void)configSubView
+{
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    
+
     //监听contentoffsetY
-    UIScrollView *scrollView = [((id<SearchConditionProtocol>)self.bottomController) scrollView];
+    UIScrollView *scrollView = [((id<SearchConditionProtocol>)self.bottomController)scrollView];
     scrollView.bounces = NO;
     [scrollView addObserver:self forKeyPath:scrollViewKeyPath options:NSKeyValueObservingOptionNew context:nil];
-    
+
     if (self.topView && self.titleView) {
         self.topView.clipsToBounds = YES;
         self.titleView.clipsToBounds = YES;
@@ -41,34 +43,36 @@ static NSString * const scrollViewKeyPath = @"contentOffset";
             make.left.right.bottom.equalTo(self.topView);
             make.height.mas_equalTo(0);
         }];
-        
+
         if ([self.titleView isKindOfClass:[UIControl class]]) {
             [((UIControl *)self.titleView) addTarget:self action:@selector(titleViewEvent) forControlEvents:UIControlEventTouchUpInside];
-        }
-        else {
+        } else {
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(titleViewEvent)];
             [self.titleView addGestureRecognizer:tap];
         }
     }
-    
-//    [self ];
+
+    //    [self ];
 }
 
-- (void)removeObserverForKVO {
-    UIScrollView *scrollView = [((id<SearchConditionProtocol>)self.bottomController) scrollView];
+- (void)removeObserverForKVO
+{
+    UIScrollView *scrollView = [((id<SearchConditionProtocol>)self.bottomController)scrollView];
     [scrollView removeObserver:self forKeyPath:scrollViewKeyPath];
 }
 
 #pragma mark - KVO
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey, id> *)change context:(void *)context
+{
     if ([keyPath isEqualToString:scrollViewKeyPath]) {
         NSValue *value = change[NSKeyValueChangeNewKey];
         [self kvo:value.CGPointValue];
     }
 }
 
-- (void)kvo:(CGPoint)contentOffset {
+- (void)kvo:(CGPoint)contentOffset
+{
     CGFloat contentOffsetY = contentOffset.y;
     if (contentOffsetY >= self.contentOffsetY) {
         NSLog(@"上滑");
@@ -76,24 +80,25 @@ static NSString * const scrollViewKeyPath = @"contentOffset";
         NSLog(@"下滑");
     }
     self.contentOffsetY = contentOffsetY;
-    
-    if (contentOffsetY <= 0 && self.fold) {          // 展开
+
+    if (contentOffsetY <= 0 && self.fold) { // 展开
         [self unfoldView:YES];
-    }
-    else if (contentOffsetY > 10 && self.fold) {     //收起
+    } else if (contentOffsetY > 10 && self.fold) { //收起
         [self unfoldView:NO];
     }
 }
 
 #pragma mark - Private Method
 
-- (void)titleViewEvent {
+- (void)titleViewEvent
+{
     [self unfoldView:YES];
 }
 
-- (void)unfoldView:(BOOL)unfold {
+- (void)unfoldView:(BOOL)unfold
+{
     dispatch_barrier_async(dispatch_get_main_queue(), ^{
-        
+
         self.topViewHeight = unfold ? self.realTopViewHeight : defaultTitleViewHeight;
         if (self.titleView) {
             if (unfold) {
@@ -101,8 +106,7 @@ static NSString * const scrollViewKeyPath = @"contentOffset";
                     make.left.right.bottom.equalTo(self.topView);
                     make.height.mas_equalTo(0);
                 }];
-            }
-            else {
+            } else {
                 [self.titleView mas_remakeConstraints:^(MASConstraintMaker *make) {
                     make.left.right.bottom.equalTo(self.topView);
                     make.height.mas_equalTo((self.titleViewHeight ?: defaultTitleViewHeight));
@@ -114,7 +118,8 @@ static NSString * const scrollViewKeyPath = @"contentOffset";
     });
 }
 
-- (void)firstRealTopViewHeight {
+- (void)firstRealTopViewHeight
+{
     if (!self.realTopViewHeight) {
         self.realTopViewHeight = CGRectGetHeight(self.topView.bounds);
         NSLog(@"真实高度 = %f", self.realTopViewHeight);
@@ -123,59 +128,73 @@ static NSString * const scrollViewKeyPath = @"contentOffset";
 
 #pragma mark - Property
 
-- (void)setCustomTopView:(UIView *)customTopView {
+- (void)setCustomTopView:(UIView *)customTopView
+{
     self.topView = customTopView;
 }
 
-- (UIView *)customTopView {
+- (UIView *)customTopView
+{
     return self.topView;
 }
 
-- (void)setScrollViewController:(UIViewController<SearchConditionProtocol> *)scrollViewController {
+- (void)setScrollViewController:(UIViewController<SearchConditionProtocol> *)scrollViewController
+{
     self.bottomController = scrollViewController;
 }
 
-- (UIViewController<SearchConditionProtocol> *)scrollViewController {
+- (UIViewController<SearchConditionProtocol> *)scrollViewController
+{
     return self.scrollViewController;
 }
 
-- (void)setTitleView:(UIView *)titleView {
+- (void)setTitleView:(UIView *)titleView
+{
     objc_setAssociatedObject(self, @selector(titleView), titleView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (UIView *)titleView {
+- (UIView *)titleView
+{
     return objc_getAssociatedObject(self, _cmd);
 }
 
-- (void)setTitleViewHeight:(CGFloat)titleViewHeight {
+- (void)setTitleViewHeight:(CGFloat)titleViewHeight
+{
     objc_setAssociatedObject(self, @selector(titleViewHeight), @(titleViewHeight), OBJC_ASSOCIATION_ASSIGN);
 }
 
-- (CGFloat)titleViewHeight {
+- (CGFloat)titleViewHeight
+{
     return [objc_getAssociatedObject(self, _cmd) floatValue];
 }
 
-- (void)setContentOffsetY:(CGFloat)contentOffsetY {
+- (void)setContentOffsetY:(CGFloat)contentOffsetY
+{
     objc_setAssociatedObject(self, @selector(contentOffsetY), @(contentOffsetY), OBJC_ASSOCIATION_ASSIGN);
 }
 
-- (CGFloat)contentOffsetY {
+- (CGFloat)contentOffsetY
+{
     return [objc_getAssociatedObject(self, _cmd) floatValue];
 }
 
-- (void)setFold:(BOOL)fold {
+- (void)setFold:(BOOL)fold
+{
     objc_setAssociatedObject(self, @selector(fold), @(fold), OBJC_ASSOCIATION_ASSIGN);
 }
 
-- (BOOL)fold {
+- (BOOL)fold
+{
     return [objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
-- (void)setRealTopViewHeight:(CGFloat)realTopViewHeight {
+- (void)setRealTopViewHeight:(CGFloat)realTopViewHeight
+{
     objc_setAssociatedObject(self, @selector(realTopViewHeight), @(realTopViewHeight), OBJC_ASSOCIATION_ASSIGN);
 }
 
-- (CGFloat)realTopViewHeight {
+- (CGFloat)realTopViewHeight
+{
     return [objc_getAssociatedObject(self, _cmd) floatValue];
 }
 

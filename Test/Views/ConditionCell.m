@@ -10,38 +10,43 @@
 #import <Masonry.h>
 #import <TTGTextTagCollectionView.h>
 
-@interface ConditionCell ()<TTGTextTagCollectionViewDelegate>
+
+@interface ConditionCell () <TTGTextTagCollectionViewDelegate>
 @property (nonatomic, strong) TTGTextTagCollectionView *onelineTagView;
 @property (nonatomic, strong) NSArray *tags;
 
 @end
+
 
 @implementation ConditionCell
 {
     NSInteger _selectedIndex;
 }
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
     // Initialization code
     [self setupView];
 }
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setupView];
     }
     return self;
 }
 
-- (void)setupView {
+- (void)setupView
+{
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+
     [self.contentView addSubview:self.onelineTagView];
     [self.onelineTagView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self).insets(UIEdgeInsetsMake(10, 10, 10, 10));
     }];
-    
+
     for (UIView *subView in self.onelineTagView.subviews) {
         if ([subView isKindOfClass:[TTGTagCollectionView class]]) {
             //KVC
@@ -52,14 +57,16 @@
     }
 }
 
-- (void)prepareForReuse {
+- (void)prepareForReuse
+{
     [super prepareForReuse];
     [_onelineTagView removeAllTags];
 }
 
 #pragma mark - Public Method
 
-- (void)addTags:(NSArray *)tags {
+- (void)addTags:(NSArray *)tags
+{
     if (!tags || tags.count == 0) return;
     self.tags = tags;
     [self.onelineTagView removeAllTags];
@@ -69,7 +76,8 @@
 
 #pragma mark - Delegate
 
-- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(NSString *)tagText atIndex:(NSUInteger)index selected:(BOOL)selected {
+- (void)textTagCollectionView:(TTGTextTagCollectionView *)textTagCollectionView didTapTag:(NSString *)tagText atIndex:(NSUInteger)index selected:(BOOL)selected
+{
     //NSLog(@"点击的文字内容： %@", tagText);
     if (index != _selectedIndex) {
         [self.onelineTagView setTagAtIndex:_selectedIndex selected:NO];
@@ -77,7 +85,7 @@
         [self.onelineTagView setTagAtIndex:index selected:YES];
     }
     _selectedIndex = index;
-    
+
     if (self.tapTag) {
         self.tapTag(tagText, index);
     }
@@ -89,17 +97,18 @@
 
 #pragma mark - Private Method
 
-- (CGSize)systemLayoutSizeFittingSize:(CGSize)targetSize withHorizontalFittingPriority:(UILayoutPriority)horizontalFittingPriority verticalFittingPriority:(UILayoutPriority)verticalFittingPriority {
-    
+- (CGSize)systemLayoutSizeFittingSize:(CGSize)targetSize withHorizontalFittingPriority:(UILayoutPriority)horizontalFittingPriority verticalFittingPriority:(UILayoutPriority)verticalFittingPriority
+{
     [_onelineTagView layoutIfNeeded];
     [_onelineTagView invalidateIntrinsicContentSize];
-    
+
     return [super systemLayoutSizeFittingSize:targetSize withHorizontalFittingPriority:horizontalFittingPriority verticalFittingPriority:verticalFittingPriority];
 }
 
 #pragma mark - Property
 
-- (TTGTextTagCollectionView *)onelineTagView {
+- (TTGTextTagCollectionView *)onelineTagView
+{
     if (!_onelineTagView) {
         _onelineTagView = [[TTGTextTagCollectionView alloc] init];
         _onelineTagView.scrollDirection = TTGTagCollectionScrollDirectionHorizontal;
@@ -110,14 +119,14 @@
         _onelineTagView.tagSelectedBackgroundColor = [UIColor whiteColor];
         _onelineTagView.delegate = self;
         //TODO: need congif
-        
+
         UIColor *highColor = [UIColor brownColor];
         _onelineTagView.tagTextColor = [UIColor blackColor];
         _onelineTagView.tagSelectedTextColor = highColor;
-        
+
         _onelineTagView.tagBorderColor = [UIColor clearColor];
         _onelineTagView.tagSelectedBorderColor = highColor;
-        
+
         _onelineTagView.extraSpace = (CGSize){25, 10};
     }
     return _onelineTagView;
@@ -125,9 +134,10 @@
 
 #pragma mark - Unused
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
     [super setSelected:selected animated:animated];
-    
+
     // Configure the view for the selected state
 }
 

@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface ConditionCell : UITableViewCell
 
-@property (nonatomic, copy) void(^tapTag)(NSString *tagText, NSUInteger index);
+@property (nonatomic, copy) void (^tapTag)(NSString *tagText, NSUInteger index);
 
 - (void)addTags:(NSArray *)tags;
 

@@ -52,6 +52,15 @@
     NSLog(@"%@%@", a, b);
 }
 
+- (void)setup:(NSString *)name
+    withPrams:(NSDictionary *)paramsDict
+            a:(NSString *)a
+            b:(NSString *)b
+            c:(NSString *)c
+{
+    NSLog(@"");
+}
+
 - (IBAction)push:(id)sender
 {
 #if 1
