@@ -15,28 +15,51 @@
 #import "UIButton+ZDUtility.h"
 //#import "UIViewController+SearchConditionPlus.h"
 
+
 @interface ViewController ()
 
 @end
 
+
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+
+    [self setup];
+}
+
+- (void)setup
+{
+    [self macroTest];
+
+    NSLog(@"testSpace");
+}
+
+- (void)macroTest
+{
 #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_9_3
     NSLog(@"啦啦啦啦啦");
 #endif
 }
 
-- (IBAction)push:(id)sender {
+- (void)ajfoaw
+{
+    NSString *a = @"a";
+    NSString *b = @"b";
+    NSLog(@"%@%@", a, b);
+}
+
+- (IBAction)push:(id)sender
+{
 #if 1
     SearchConditionController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass([SearchConditionController class])];
 #else
     CombineViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass([CombineViewController class])];
 #endif
-    
+
     vc.topView = ({
         TestTopView *view = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([TestTopView class]) owner:nil options:nil].lastObject;
         view.backgroundColor = [UIColor purpleColor];
@@ -56,11 +79,12 @@
         [button zd_imagePosition:ZDImagePosition_Right spacing:5.f];
         button;
     });
-    
+
     [self.navigationController showViewController:vc sender:self];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
