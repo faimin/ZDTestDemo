@@ -17,7 +17,7 @@
 
 
 @interface ViewController ()
-
+@property (nonatomic, strong) UIButton *button;
 @end
 
 
