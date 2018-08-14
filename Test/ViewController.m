@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+@import ObjectiveC;
 #import "CombineViewController.h"
 #import "SearchConditionController.h"
 #import "SearchConditionView.h"
@@ -35,6 +36,8 @@
 {
     [self macroTest];
 
+    [self associated];
+    
     NSLog(@"testSpace");
 }
 
@@ -43,6 +46,13 @@
 #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_9_3
     NSLog(@"啦啦啦啦啦");
 #endif
+}
+
+- (void)associated {
+    objc_setAssociatedObject(self, @selector(associated), @"value", OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(associated), nil, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    id value = objc_getAssociatedObject(self, @selector(associated));
+    NSLog(@"获取到的绑定的结果： %@", value); // nil
 }
 
 - (void)ajfoaw
