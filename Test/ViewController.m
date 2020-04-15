@@ -53,6 +53,14 @@
     objc_setAssociatedObject(self, @selector(associated), nil, OBJC_ASSOCIATION_COPY_NONATOMIC);
     id value = objc_getAssociatedObject(self, @selector(associated));
     NSLog(@"获取到的绑定的结果： %@", value); // nil
+    
+    void *any = nil;
+    {
+        NSObject *obj = [NSObject new];
+        any = (__bridge void *)obj;
+    }
+    //NSLog(@"------ %@", any);
+    NSLog(@"xxxxxxxxxxxxxxxxxxxxxxxx");
 }
 
 - (void)ajfoaw

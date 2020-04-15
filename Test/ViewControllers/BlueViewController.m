@@ -16,6 +16,7 @@ static NSString *const reuseIdentifier = @"reuseIdentifier";
 
 @end
 
+static void *value = nil;
 
 @implementation BlueViewController
 {
@@ -23,12 +24,16 @@ static NSString *const reuseIdentifier = @"reuseIdentifier";
     BOOL _fold;
 }
 
+- (void)dealloc {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.scrollView registerClass:[UITableViewCell class] forCellReuseIdentifier:reuseIdentifier];
+    value = (__bridge void *)(self);
 }
 
 - (void)didReceiveMemoryWarning
